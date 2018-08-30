@@ -3,6 +3,8 @@ package de.mz.jk.jsix.libs;
 import java.lang.reflect.Field;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -752,5 +754,60 @@ public class XJava
 			res.add( list.get( i ) );
 		}
 		return res;
+	}
+
+	/**
+	 * produce a message digest hash for the given user input string
+	 * @param input
+	 * @param algorithm SHA1, MD5
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static String getHash(String input, String algorithm) throws NoSuchAlgorithmException
+	{
+		MessageDigest mDigest = MessageDigest.getInstance( algorithm );
+		byte[] result = mDigest.digest( input.getBytes() );
+		StringBuffer sb = new StringBuffer();
+		for ( int i = 0; i < result.length; i++ )
+		{
+			sb.append( Integer.toString( ( result[i] & 0xff ) + 0x100, 16 ).substring( 1 ) );
+		}
+		return sb.toString();
+	}
+
+	/**
+	 * get SHA1 hash for input string
+	 * @param input
+	 * @return
+	 */
+	public static String getSHA1(String input)
+	{
+		try
+		{
+			return ( getHash( input, "SHA1" ) );
+		}
+		catch (NoSuchAlgorithmException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	/**
+	 * get MD5 hash for the user input string
+	 * @param input
+	 * @return
+	 */
+	public static String getMD5(String input)
+	{
+		try
+		{
+			return ( getHash( input, "MD5" ) );
+		}
+		catch (NoSuchAlgorithmException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
