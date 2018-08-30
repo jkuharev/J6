@@ -9,6 +9,9 @@ import java.util.Map;
 import org.apache.commons.cli.*;
 
 /**
+ * this is a wrapper for commons cli
+ * that allows for a further simplification 
+ * of cli implementation in an application
  * <h3>{@link xCLI}</h3>
  * @author jkuharev
  * @version Feb 15, 2017 9:05:51 AM
