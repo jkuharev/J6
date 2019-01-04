@@ -4,12 +4,27 @@ package de.mz.jk.jsix.lists;
 import de.mz.jk.jsix.lang.PayloadCarrier;
 
 /**
- * XLinkedList is a in fact a node of a linked list with the explicite ability
- * to change its precursor/successor and to find tail and head elements of the whole chain.
+ * XLinkedList is a in fact a node of a linked list
+ * that provides linked list functionality to any 
+ * user defined object type (payload). 
+ * A XLinkedList node is capable
+ * to dynamically change its precursor/successor and 
+ * to find tail and head elements of the whole chain.
  * 
  * <h3>{@link XLinkedList}</h3>
  * 
- * ATTENTION: this implementation does not check for cyclic linkage
+ * WARNING: this implementation does not resolve cyclic linkage,
+ * 				thus getting head or tail can cause endless loops.
+ * 
+ * TODO: add cyclic linkage check,
+ * 			e.g. by testing the equality of next node in the loop
+ * 			with the current object.
+ * 			Chicken or the egg: 
+ * 				what element of the endless loop
+ * 				is the actual head or tail?
+ * 			Possible solutions:
+ * 				a) raise an error
+ * 				b) return current object 
  * 
  * @author Joerg Kuharev
  * @version 06.05.2011 10:53:01

@@ -1,8 +1,8 @@
 package de.mz.jk.jsix.lang;
 
 /**
- * the implementation if this interface shold convert a String object 
- * to its specific representation in user defined type.
+ * An implementation if this interface should convert a String object 
+ * to its specific representation as user defined type.
  * This concept is typically used as a replacement for lambda expressions
  * to pass an implementation of a function that does something with a string
  * the function convert() is then implemented outside of the main logic of user code 
