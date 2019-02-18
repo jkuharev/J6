@@ -1,2 +1,4 @@
 # ignore compiled binaries
 bin/
+*.class
+target/
